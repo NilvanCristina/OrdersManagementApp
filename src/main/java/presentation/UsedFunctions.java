@@ -9,8 +9,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Aceasta clasa contine metode comune folosite de clasa View si clasa Controller.
- */
 public class UsedFunctions {
     public void cleanPanel(JPanel panel) {
         panel.removeAll();
@@ -85,9 +83,6 @@ public class UsedFunctions {
         return columnNames.toArray(new String[0]);
     }
 
-    /** Aceasta metoda foloseste reflexia pentru a obtine un tabel format din lista de elemente
-     * primite ca parametru.
-     */
     public <T> JScrollPane getTable(List<T> objects) {
         DefaultTableModel model = new DefaultTableModel();
         boolean firstIteration = true;

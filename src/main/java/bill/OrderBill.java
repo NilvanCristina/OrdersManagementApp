@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/** Aceasta clasa genereaza un fisier *.txt ce contine detaliile unei comenzi.
- */
 public class OrderBill {
     private Client client;
     private Product product;

@@ -14,8 +14,6 @@ import java.util.logging.Logger;
 
 import connection.ConnectionFactory;
 
-/** Aceasta clasa contine operatiile de baza pentru fiecare tabel (findById, findAll, insert, update, delete).
- */
 public class AbstractDAO<T> {
     protected static final Logger LOGGER = Logger.getLogger(AbstractDAO.class.getName());
     private final Class<T> type;
@@ -25,11 +23,6 @@ public class AbstractDAO<T> {
         this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    /** Aceasta metoda primeste un parametru de tipul ResultSet care reprezinta setul de randuri
-     * rezultate in urma unei interogari si il converteste intr-o lista de obiecte.
-     * @param resultSet: resultSet-ul rezultat in urma executiei interogarii
-     * @return lista de obiecte de tipul elementelor din resultSet
-     */
     protected List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<>();
         Constructor<?>[] declaredConstructors = type.getDeclaredConstructors();
@@ -72,10 +65,6 @@ public class AbstractDAO<T> {
                 " WHERE " + field + " = ?";
     }
 
-    /** Aceasta metoda primeste un id si cauta in tabel randul ce corespunde acestui id.
-     * @param id: id-ul dupa care se face cautarea
-     * @return obiectul rezultat in urma interogarii
-     */
     public T findById(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -111,8 +100,6 @@ public class AbstractDAO<T> {
                 type.getSimpleName();
     }
 
-    /** Aceasta metoda returneaza o lista de obiecte ce contine toate randurile unui tabel.
-     */
     public List<T> findAll() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -171,9 +158,6 @@ public class AbstractDAO<T> {
         return query.toString();
     }
 
-    /** Aceasta metoda insereaza un obiect in tabelul corespunzator.
-     * @param object: obiectul pe care trebuie sa il inseram in tabel.
-     */
     public void insert(T object) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -209,12 +193,6 @@ public class AbstractDAO<T> {
                 conditionColumn + " = ?";
     }
 
-    /** Aceasta metoda face update unui obiect.
-     * @param toSetColumn: coloana pe care dorim sa o modificam
-     * @param toSetValue: noua valoare pe care dorim sa o atribuim
-     * @param conditionColumn: coloana dupa cautam elementul pe care vrem sa il modificam
-     * @param conditionValue: valoarea dupa care cautam elementul pe care vrem sa il modificam
-     */
     public void update(String toSetColumn, String toSetValue, String conditionColumn, String conditionValue) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -243,10 +221,6 @@ public class AbstractDAO<T> {
                 conditionColumn + " = ?";
     }
 
-    /** Aceasta metoda sterge un obiect.
-     * @param conditionColumn: coloana dupa cautam elementul pe care vrem sa il stergem
-     * @param conditionValue: valoarea dupa care cautam elementul pe care vrem sa il stergem
-     */
     public void delete(String conditionColumn, String conditionValue) {
         Connection connection = null;
         PreparedStatement statement = null;

@@ -2,7 +2,6 @@ package presentation;
 
 import bll.*;
 import model.*;
-import bill.OrderBill;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

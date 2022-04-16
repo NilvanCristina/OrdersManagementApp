@@ -9,12 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
-/** Aceasta clasa contine operatiile specifice unui client.
- */
 public class ClientDAO extends AbstractDAO<Client> {
-    /** Aceasta metoda primeste un nume si cauta in tabel randul ce corespunde acestui nume.
-     * @param name: numele dupa care se face cautarea
-     */
     public Client findByName(String name) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -43,9 +38,6 @@ public class ClientDAO extends AbstractDAO<Client> {
         return null;
     }
 
-    /** Aceasta metoda primeste un email si cauta in tabel randul ce corespunde acestui email.
-     * @param email: email-ul dupa care se face cautarea
-     */
     public Client findByEmail(String email) {
         Connection connection = null;
         PreparedStatement statement = null;
